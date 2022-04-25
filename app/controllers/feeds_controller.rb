@@ -22,6 +22,7 @@ class FeedsController < ApplicationController
   # POST /feeds or /feeds.json
   def create
     @feed = Feed.new(feed_params)
+    @feed.user_id = current_user.id 
 
     respond_to do |format|
       if @feed.save
