@@ -30,7 +30,7 @@ class FeedsController < ApplicationController
   # POST /feeds or /feeds.json
   def create
     @feed = Feed.new(feed_params)
-    @feed.user_id = current_user.id 
+    @feed.user_id = current_user.id
     respond_to do |format|
       if @feed.save
         format.html { redirect_to feed_url(@feed), notice: "Feed was successfully created." }
@@ -73,6 +73,6 @@ class FeedsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def feed_params
-      params.require(:feed).permit(:image, :image_cache, :content)
+      params.require(:feed).permit(:image, :image_cache, :content, :user_id)
     end
 end
